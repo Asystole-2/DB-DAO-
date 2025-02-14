@@ -2,20 +2,20 @@ package DTOs;
 
 public class Income {
 
-    private int id;
+    private int income_id;
     private String title;
     private double amount;
     private String dateEarned;
 
     public Income(int incomeId, String title, double amount, String dateEarned) {
-        this.id = incomeId;
+        this.income_id = incomeId;
         this.title = title;
         this.amount = amount;
         this.dateEarned = dateEarned;
     }
 
     public Income(String title, double amount, String dateEarned) {
-        this.id = 0;
+        this.income_id = 0;
         this.title = title;
         this.amount = amount;
         this.dateEarned = dateEarned;
@@ -24,12 +24,12 @@ public class Income {
     public Income() {
     }
 
-    public int getId() {
-        return id;
+    public int getIncome_id() {
+        return income_id;
     }
 
-    public void setid(int id) {
-        this.id = id;
+    public void setIncome_id(int income_id) {
+        this.income_id = income_id;
     }
 
     public String getTitle() {
@@ -59,7 +59,7 @@ public class Income {
     @Override
     public String toString() {
         return "Income{" +
-                "id=" + id +
+                "income_id=" + income_id +
                 ", title='" + title + '\'' +
                 ", amount=" + amount +
                 ", dateEarned='" + dateEarned + '\'' +
