@@ -1,14 +1,14 @@
 package DTOs;
 
 public class Expense {
-    private int id;
+    private int expenseId;
     private String title;
     private String category;
     private Double amount;
     private String dateIncurred;
 
     public Expense(int expenseId, String title, String category, double amount, String dateIncurred) {
-        this.id = expenseId;
+        this.expenseId = expenseId;
         this.title = title;
         this.category = category;
         this.amount = amount;
@@ -16,7 +16,7 @@ public class Expense {
     }
 
     public Expense(String title, String category, double amount, String dateIncurred) {
-        this.id = 0;
+        this.expenseId = 0;
         this.title = title;
         this.category = category;
         this.amount = amount;
@@ -27,11 +27,11 @@ public class Expense {
     }
 
     public int getId() {
-        return id;
+        return expenseId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int expenseId) {
+        this.expenseId = expenseId;
     }
 
     public String getTitle() {
@@ -71,7 +71,7 @@ public class Expense {
     @java.lang.Override
     public java.lang.String toString() {
         return "Expense{" +
-                "id=" + id +
+                "expenseId=" + expenseId +
                 ", title='" + title + '\'' +
                 ", category='" + category + '\'' +
                 ", amount=" + amount +
