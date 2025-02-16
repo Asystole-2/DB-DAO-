@@ -27,11 +27,11 @@ public class ExpenseDAO  extends MySqlDao implements ExpenseDaoInterface {
 
             while(myResultSet.next())
             {
-                int expenseId = myResultSet.getInt("EXPENSE_ID");
+                int expenseId = myResultSet.getInt("expenseID");
                 String title = myResultSet.getString("TITLE");
                 String category = myResultSet.getString("CATEGORY");
                 double amount = myResultSet.getDouble("AMOUNT");
-                String dateIncurred = myResultSet.getString("DATE_INCURRED");
+                String dateIncurred = myResultSet.getString("DATEINCURRED");
 
                 Expense newExpense = new Expense(expenseId, title,category, amount, dateIncurred);
                 ExpenseList.add(newExpense);
@@ -76,17 +76,17 @@ public class ExpenseDAO  extends MySqlDao implements ExpenseDaoInterface {
 
         try {
             myConnection = this.getConnection();
-            String sql = "select * from expenses where dateIncurred = ?";
+            String sql = "select * from expenses WHERE DATE_FORMAT(dateIncurred, '%Y-%m') =  ?";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myPreparedStatement.setString(1, subString);
             myResultSet = myPreparedStatement.executeQuery();
 
             while (myResultSet.next()) {
-                int expense_id = myResultSet.getInt("EXPENSE_ID");
+                int expense_id = myResultSet.getInt("EXPENSEID");
                 String title = myResultSet.getString("TITLE");
                 String category = myResultSet.getString("CATEGORY");
                 double amount = myResultSet.getDouble("AMOUNT");
-                String dateIncurred = myResultSet.getString("DATE_INCURRED");
+                String dateIncurred = myResultSet.getString("DATEINCURRED");
 
                 Expense newExpense = new Expense(expense_id, title,category, amount, dateIncurred);
                 ExpenseList.add(newExpense);
@@ -160,7 +160,7 @@ public class ExpenseDAO  extends MySqlDao implements ExpenseDaoInterface {
 
         try {
             myConnection = this.getConnection();
-            String sql = "DELETE FROM expenses WHERE expense_id = ?";
+            String sql = "DELETE FROM expenses WHERE expenseid = ?";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myPreparedStatement.setInt(1, expense_id);
             myPreparedStatement.executeUpdate();

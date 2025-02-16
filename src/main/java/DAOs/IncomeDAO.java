@@ -21,16 +21,16 @@ public class IncomeDAO extends MySqlDao implements IncomeDaoInterface {
 
         try{
             myConnection = getConnection();
-            String sql = "select * from incomes";
+            String sql = "select * from income";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myResultSet = myPreparedStatement.executeQuery();
 
             while(myResultSet.next())
             {
-                int income_id = myResultSet.getInt("INCOME_ID");
+                int income_id = myResultSet.getInt("INCOMEID");
                 String title = myResultSet.getString("TITLE");
                 double amount = myResultSet.getDouble("AMOUNT");
-                String dateEarned = myResultSet.getString("DATE_EARNED");
+                String dateEarned = myResultSet.getString("DATEEARNED");
 
                 Income newIncome = new Income(income_id, title, amount, dateEarned);
                 IncomeList.add(newIncome);
@@ -75,16 +75,16 @@ public class IncomeDAO extends MySqlDao implements IncomeDaoInterface {
 
         try {
             myConnection = this.getConnection();
-            String sql = "select * from incomes where dateEarned = ?";
+            String sql = "select * from income WHERE DATE_FORMAT(dateEarned, '%Y-%m') = ?";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myPreparedStatement.setString(1, subString);
             myResultSet = myPreparedStatement.executeQuery();
 
             while (myResultSet.next()) {
-                int income_id = myResultSet.getInt("INCOME_ID");
+                int income_id = myResultSet.getInt("INCOMEID");
                 String title = myResultSet.getString("TITLE");
                 double amount = myResultSet.getDouble("AMOUNT");
-                String dateEarned = myResultSet.getString("DATE_EARNED");
+                String dateEarned = myResultSet.getString("DATEEARNED");
 
                 Income newIncome = new Income(income_id, title, amount, dateEarned);
                 IncomeList.add(newIncome);
@@ -120,7 +120,7 @@ public class IncomeDAO extends MySqlDao implements IncomeDaoInterface {
 
         try {
             myConnection = this.getConnection();
-            String sql = "INSERT INTO incomes (title, amount, dateEarned) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO income(title, amount, dateEarned) VALUES (?, ?, ?)";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myPreparedStatement.setString(1, title);
             myPreparedStatement.setDouble(2, amount);
@@ -157,7 +157,7 @@ public class IncomeDAO extends MySqlDao implements IncomeDaoInterface {
 
         try {
             myConnection = this.getConnection();
-            String sql = "DELETE FROM incomes WHERE income_id = ?";
+            String sql = "DELETE FROM income WHERE incomeid = ?";
             myPreparedStatement = myConnection.prepareStatement(sql);
             myPreparedStatement.setInt(1, income_id);
             myPreparedStatement.executeUpdate();

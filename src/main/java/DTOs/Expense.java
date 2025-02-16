@@ -70,7 +70,7 @@ public class Expense {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "Expense{" +
+        return "{" +
                 "expenseId=" + expenseId +
                 ", title='" + title + '\'' +
                 ", category='" + category + '\'' +

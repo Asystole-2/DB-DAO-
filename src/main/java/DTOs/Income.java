@@ -58,7 +58,7 @@ public class Income {
 
     @Override
     public String toString() {
-        return "Income{" +
+        return "{" +
                 "income_id=" + income_id +
                 ", title='" + title + '\'' +
                 ", amount=" + amount +

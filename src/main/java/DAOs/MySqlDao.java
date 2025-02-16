@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import Exceptions.DaoException;
 
-public class MySqlDao
+public abstract class MySqlDao
 {
     public Connection getConnection() throws DaoException
     {
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/users";
+        String url = "jdbc:mysql://localhost:3306/financetracker";
         String username = "root";
         String password = "";
         Connection connection = null;
